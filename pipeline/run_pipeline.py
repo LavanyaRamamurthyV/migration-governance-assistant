@@ -47,7 +47,7 @@ def main():
                    index=ctx["index_meta"], step_seconds={**summary.get("step_seconds", {}), **timings})
     if not args.index_only:
         summary.update(
-            staging_rows=ctx["staging_rows"], hub_rows=ctx["hub_rows"],
+            staging_rows=ctx["staging_rows"], tgt_rows=ctx["tgt_rows"],
             tables_passed=ctx["recon"]["tables_passed"], tables_total=ctx["recon"]["tables_total"],
             findings=len(ctx["recon"]["findings"]),
             pii_masked_in_migration=ctx["migration_mask"], pii_masked_in_documents=ctx["doc_mask"],

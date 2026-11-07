@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-07T01:53:50",
+  "generated_at": "2026-11-07T10:20:59",
   "index": {
     "embedding_backend": "lsa",
     "chunks": 133,
@@ -10,13 +10,13 @@
     "offtopic_best_mean": 0.051
   },
   "step_seconds": {
-    "1. Load": 5.4,
-    "2. Migrate": 5.7,
-    "3. Reconcile": 2.8,
+    "1. Load": 6.8,
+    "2. Migrate": 6.2,
+    "3. Reconcile": 2.7,
     "4. Generate docs": 1.0,
     "5. Mask PII": 0.0,
     "6. Chunk": 0.0,
-    "7. Embed and store": 0.9
+    "7. Embed and store": 1.4
   },
   "staging_rows": {
     "customers": 99441,
@@ -29,15 +29,15 @@
     "geolocation": 1000163,
     "translation": 71
   },
-  "hub_rows": {
-    "hub_customer": 99441,
-    "hub_order": 99441,
-    "hub_order_item": 112650,
-    "hub_payment": 103886,
-    "hub_review": 99224,
-    "hub_product": 32951,
-    "hub_seller": 3095,
-    "hub_geolocation": 1000163
+  "tgt_rows": {
+    "tgt_customer": 99441,
+    "tgt_order": 99441,
+    "tgt_order_item": 112650,
+    "tgt_payment": 103886,
+    "tgt_review": 99224,
+    "tgt_product": 32951,
+    "tgt_seller": 3095,
+    "tgt_geolocation": 1000163
   },
   "tables_passed": 8,
   "tables_total": 8,

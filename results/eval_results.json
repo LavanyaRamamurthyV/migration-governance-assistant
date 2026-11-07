@@ -21,7 +21,7 @@
         12
       ]
     ],
-    "mean_latency_ms": 33
+    "mean_latency_ms": 32
   },
   "rows": [
     {
@@ -31,8 +31,8 @@
       "retrieval_hit": true,
       "keyword_hit": true,
       "correct": true,
-      "relevance": 0.298,
-      "latency_ms": 452
+      "relevance": 0.297,
+      "latency_ms": 441
     },
     {
       "question": "How is customer_unique_id transformed during migration?",
@@ -41,7 +41,7 @@
       "retrieval_hit": true,
       "keyword_hit": true,
       "correct": true,
-      "relevance": 0.362,
+      "relevance": 0.361,
       "latency_ms": 6
     },
     {
@@ -51,7 +51,7 @@
       "retrieval_hit": true,
       "keyword_hit": true,
       "correct": true,
-      "relevance": 0.292,
+      "relevance": 0.287,
       "latency_ms": 6
     },
     {
@@ -62,7 +62,7 @@
       "keyword_hit": true,
       "correct": true,
       "relevance": 0.579,
-      "latency_ms": 5
+      "latency_ms": 6
     },
     {
       "question": "What is blocking the Customer Experience cutover?",
@@ -71,17 +71,17 @@
       "retrieval_hit": true,
       "keyword_hit": true,
       "correct": true,
-      "relevance": 0.349,
+      "relevance": 0.347,
       "latency_ms": 6
     },
     {
-      "question": "How many rows were migrated into hub_order?",
+      "question": "How many rows were migrated into tgt_order?",
       "answerable": true,
       "answered": true,
       "retrieval_hit": true,
       "keyword_hit": true,
       "correct": true,
-      "relevance": 0.492,
+      "relevance": 0.487,
       "latency_ms": 6
     },
     {
@@ -91,7 +91,7 @@
       "retrieval_hit": true,
       "keyword_hit": true,
       "correct": true,
-      "relevance": 0.221,
+      "relevance": 0.222,
       "latency_ms": 6
     },
     {
@@ -101,17 +101,17 @@
       "retrieval_hit": true,
       "keyword_hit": true,
       "correct": true,
-      "relevance": 0.327,
-      "latency_ms": 5
+      "relevance": 0.301,
+      "latency_ms": 6
     },
     {
-      "question": "Which teams consume hub_payment?",
+      "question": "Which teams consume tgt_payment?",
       "answerable": true,
       "answered": true,
       "retrieval_hit": true,
       "keyword_hit": true,
       "correct": true,
-      "relevance": 0.575,
+      "relevance": 0.57,
       "latency_ms": 6
     },
     {
@@ -121,7 +121,7 @@
       "retrieval_hit": true,
       "keyword_hit": false,
       "correct": false,
-      "relevance": 0.305,
+      "relevance": 0.299,
       "latency_ms": 5
     },
     {
@@ -132,7 +132,7 @@
       "keyword_hit": false,
       "correct": false,
       "relevance": 0.468,
-      "latency_ms": 5
+      "latency_ms": 6
     },
     {
       "question": "Who must approve a mapping that the AI assistant suggested?",
@@ -141,8 +141,8 @@
       "retrieval_hit": true,
       "keyword_hit": true,
       "correct": true,
-      "relevance": 0.699,
-      "latency_ms": 5
+      "relevance": 0.698,
+      "latency_ms": 7
     },
     {
       "question": "Who is the CEO of Olist?",
@@ -152,7 +152,7 @@
       "keyword_hit": null,
       "correct": true,
       "relevance": 0.1,
-      "latency_ms": 5
+      "latency_ms": 6
     },
     {
       "question": "What is the weather in Dallas today?",
@@ -165,14 +165,14 @@
       "latency_ms": 5
     },
     {
-      "question": "Which Snowflake warehouse size should we use for the hub?",
+      "question": "Which Snowflake warehouse size should we use for the target?",
       "answerable": false,
       "answered": false,
       "retrieval_hit": null,
       "keyword_hit": null,
       "correct": true,
-      "relevance": 0.153,
-      "latency_ms": 5
+      "relevance": 0.152,
+      "latency_ms": 6
     },
     {
       "question": "What is the capital of France?",
