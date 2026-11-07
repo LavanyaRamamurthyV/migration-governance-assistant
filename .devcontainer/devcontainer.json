@@ -1,0 +1,13 @@
+{
+  "name": "Migration & Governance Assistant",
+  "postCreateCommand": "pip install -r requirements.txt && python -m pipeline.run_pipeline --index-only",
+  "forwardPorts": [8501],
+  "portsAttributes": {
+    "8501": { "label": "Assistant UI", "onAutoForward": "openBrowser" }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python"]
+    }
+  }
+}

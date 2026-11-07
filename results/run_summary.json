@@ -1,0 +1,52 @@
+{
+  "generated_at": "2026-11-07T01:53:50",
+  "index": {
+    "embedding_backend": "lsa",
+    "chunks": 133,
+    "relevance_threshold": 0.213,
+    "w_vector": 0.2,
+    "w_keyword": 0.8,
+    "offtopic_best_max": 0.193,
+    "offtopic_best_mean": 0.051
+  },
+  "step_seconds": {
+    "1. Load": 5.4,
+    "2. Migrate": 5.7,
+    "3. Reconcile": 2.8,
+    "4. Generate docs": 1.0,
+    "5. Mask PII": 0.0,
+    "6. Chunk": 0.0,
+    "7. Embed and store": 0.9
+  },
+  "staging_rows": {
+    "customers": 99441,
+    "orders": 99441,
+    "order_items": 112650,
+    "payments": 103886,
+    "reviews": 99224,
+    "products": 32951,
+    "sellers": 3095,
+    "geolocation": 1000163,
+    "translation": 71
+  },
+  "hub_rows": {
+    "hub_customer": 99441,
+    "hub_order": 99441,
+    "hub_order_item": 112650,
+    "hub_payment": 103886,
+    "hub_review": 99224,
+    "hub_product": 32951,
+    "hub_seller": 3095,
+    "hub_geolocation": 1000163
+  },
+  "tables_passed": 8,
+  "tables_total": 8,
+  "findings": 6,
+  "pii_masked_in_migration": {
+    "phone": 3
+  },
+  "pii_masked_in_documents": {
+    "identifier": 12
+  },
+  "data_source": "Olist Brazilian E-Commerce Public Dataset (Kaggle, CC BY-NC-SA 4.0)"
+}

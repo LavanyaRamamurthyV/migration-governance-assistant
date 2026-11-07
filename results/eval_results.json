@@ -1,0 +1,188 @@
+{
+  "summary": {
+    "provider": "extractive",
+    "questions": 16,
+    "correct": 14,
+    "accuracy_overall": 0.875,
+    "retrieval_hit_rate": 1.0,
+    "answer_vs_refuse_accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "correct_refusals": 4,
+    "unanswerable_total": 4,
+    "confusion_matrix": [
+      [
+        4,
+        0
+      ],
+      [
+        0,
+        12
+      ]
+    ],
+    "mean_latency_ms": 33
+  },
+  "rows": [
+    {
+      "question": "Where does customer_zip_prefix come from?",
+      "answerable": true,
+      "answered": true,
+      "retrieval_hit": true,
+      "keyword_hit": true,
+      "correct": true,
+      "relevance": 0.298,
+      "latency_ms": 452
+    },
+    {
+      "question": "How is customer_unique_id transformed during migration?",
+      "answerable": true,
+      "answered": true,
+      "retrieval_hit": true,
+      "keyword_hit": true,
+      "correct": true,
+      "relevance": 0.362,
+      "latency_ms": 6
+    },
+    {
+      "question": "What reconciliation thresholds apply to a migration?",
+      "answerable": true,
+      "answered": true,
+      "retrieval_hit": true,
+      "keyword_hit": true,
+      "correct": true,
+      "relevance": 0.292,
+      "latency_ms": 6
+    },
+    {
+      "question": "What changed in layout v2 for order_status?",
+      "answerable": true,
+      "answered": true,
+      "retrieval_hit": true,
+      "keyword_hit": true,
+      "correct": true,
+      "relevance": 0.579,
+      "latency_ms": 5
+    },
+    {
+      "question": "What is blocking the Customer Experience cutover?",
+      "answerable": true,
+      "answered": true,
+      "retrieval_hit": true,
+      "keyword_hit": true,
+      "correct": true,
+      "relevance": 0.349,
+      "latency_ms": 6
+    },
+    {
+      "question": "How many rows were migrated into hub_order?",
+      "answerable": true,
+      "answered": true,
+      "retrieval_hit": true,
+      "keyword_hit": true,
+      "correct": true,
+      "relevance": 0.492,
+      "latency_ms": 6
+    },
+    {
+      "question": "How long is transaction data retained?",
+      "answerable": true,
+      "answered": true,
+      "retrieval_hit": true,
+      "keyword_hit": true,
+      "correct": true,
+      "relevance": 0.221,
+      "latency_ms": 6
+    },
+    {
+      "question": "What is the decommissioning rule for the legacy platform?",
+      "answerable": true,
+      "answered": true,
+      "retrieval_hit": true,
+      "keyword_hit": true,
+      "correct": true,
+      "relevance": 0.327,
+      "latency_ms": 5
+    },
+    {
+      "question": "Which teams consume hub_payment?",
+      "answerable": true,
+      "answered": true,
+      "retrieval_hit": true,
+      "keyword_hit": true,
+      "correct": true,
+      "relevance": 0.575,
+      "latency_ms": 6
+    },
+    {
+      "question": "What should we do if row counts do not match after loading?",
+      "answerable": true,
+      "answered": true,
+      "retrieval_hit": true,
+      "keyword_hit": false,
+      "correct": false,
+      "relevance": 0.305,
+      "latency_ms": 5
+    },
+    {
+      "question": "Which fields in the customer mapping are flagged as PII?",
+      "answerable": true,
+      "answered": true,
+      "retrieval_hit": true,
+      "keyword_hit": false,
+      "correct": false,
+      "relevance": 0.468,
+      "latency_ms": 5
+    },
+    {
+      "question": "Who must approve a mapping that the AI assistant suggested?",
+      "answerable": true,
+      "answered": true,
+      "retrieval_hit": true,
+      "keyword_hit": true,
+      "correct": true,
+      "relevance": 0.699,
+      "latency_ms": 5
+    },
+    {
+      "question": "Who is the CEO of Olist?",
+      "answerable": false,
+      "answered": false,
+      "retrieval_hit": null,
+      "keyword_hit": null,
+      "correct": true,
+      "relevance": 0.1,
+      "latency_ms": 5
+    },
+    {
+      "question": "What is the weather in Dallas today?",
+      "answerable": false,
+      "answered": false,
+      "retrieval_hit": null,
+      "keyword_hit": null,
+      "correct": true,
+      "relevance": 0.092,
+      "latency_ms": 5
+    },
+    {
+      "question": "Which Snowflake warehouse size should we use for the hub?",
+      "answerable": false,
+      "answered": false,
+      "retrieval_hit": null,
+      "keyword_hit": null,
+      "correct": true,
+      "relevance": 0.153,
+      "latency_ms": 5
+    },
+    {
+      "question": "What is the capital of France?",
+      "answerable": false,
+      "answered": false,
+      "retrieval_hit": null,
+      "keyword_hit": null,
+      "correct": true,
+      "relevance": 0.0,
+      "latency_ms": 3
+    }
+  ]
+}

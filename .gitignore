@@ -1,0 +1,17 @@
+# secrets: never commit these
+.env
+
+# rebuilt by the pipeline
+storage/
+logs/
+
+# the Olist CSVs are not redistributed here: download them from Kaggle
+data/raw/*
+!data/raw/.gitkeep
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
