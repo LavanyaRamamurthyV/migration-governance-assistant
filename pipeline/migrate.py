@@ -1,6 +1,6 @@
 """Step 2: Migrate.
 
-Turns the raw legacy staging data into clean Data Hub tables, following the
+Turns the raw legacy staging data into clean Target Platform tables, following the
 rules in pipeline/spec.py (rename, retype, trim, tokenize, mask free text).
 """
 import hashlib
@@ -46,22 +46,22 @@ def transform(series: pd.Series, kind: str, mask_counts: Counter) -> pd.Series:
 
 
 INDEXES = [
-    ("hub_customer", "customer_key"), ("hub_order", "order_id"), ("hub_order", "customer_key"),
-    ("hub_order_item", "order_id"), ("hub_order_item", "product_id"), ("hub_order_item", "seller_id"),
-    ("hub_payment", "order_id"), ("hub_review", "order_id"), ("hub_product", "product_id"),
-    ("hub_seller", "seller_id"),
+    ("tgt_customer", "customer_key"), ("tgt_order", "order_id"), ("tgt_order", "customer_key"),
+    ("tgt_order_item", "order_id"), ("tgt_order_item", "product_id"), ("tgt_order_item", "seller_id"),
+    ("tgt_payment", "order_id"), ("tgt_review", "order_id"), ("tgt_product", "product_id"),
+    ("tgt_seller", "seller_id"),
 ]
 
 
 def run(ctx):
     frames = ctx["frames"]
-    if config.HUB_DB.exists():
-        config.HUB_DB.unlink()
-    con = sqlite3.connect(config.HUB_DB)
+    if config.TARGET_DB.exists():
+        config.TARGET_DB.unlink()
+    con = sqlite3.connect(config.TARGET_DB)
     mask_counts = Counter()
     translation = (frames["translation"]
                    .set_index("product_category_name")["product_category_name_english"])
-    hub_rows = {}
+    tgt_rows = {}
     for t in TABLES:
         src = frames[t["name"]]
         out = pd.DataFrame(index=src.index)
@@ -70,13 +70,13 @@ def run(ctx):
                 out[col["tgt"]] = out["category_name_pt"].map(translation)
             else:
                 out[col["tgt"]] = transform(src[col["src"]], col["kind"], mask_counts)
-        out.to_sql(t["hub_table"], con, index=False, if_exists="replace", chunksize=100_000)
-        hub_rows[t["hub_table"]] = len(out)
+        out.to_sql(t["tgt_table"], con, index=False, if_exists="replace", chunksize=100_000)
+        tgt_rows[t["tgt_table"]] = len(out)
     for table, column in INDEXES:
         con.execute(f"CREATE INDEX IF NOT EXISTS ix_{table}_{column} ON {table}({column})")
     con.commit()
     con.close()
-    ctx["hub_rows"] = hub_rows
+    ctx["tgt_rows"] = tgt_rows
     ctx["migration_mask"] = dict(mask_counts)
-    return (f"{len(hub_rows)} hub tables, {sum(hub_rows.values()):,} rows; "
+    return (f"{len(tgt_rows)} target tables, {sum(tgt_rows.values()):,} rows; "
             f"free-text items masked: {dict(mask_counts) or 'none'}")

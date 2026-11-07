@@ -1,0 +1,19 @@
+flowchart TD
+  CSV["Olist CSV files, real data<br/>Kaggle download"]:::src
+  subgraph ORCH["Orchestrator: pipeline/run_pipeline.py"]
+    direction TB
+    S1["1. Load<br/><b>pandas + SQLite</b>"]:::proc
+    S2["2. Migrate<br/><b>pandas + SQL</b>"]:::proc
+    S3["3. Reconcile<br/><b>pandas + NumPy + SQL</b>"]:::gov
+    S4["4. Generate docs<br/><b>pandas + Python</b>"]:::proc
+    S5["5. Mask PII<br/><b>Python regex</b>"]:::gov
+    S6["6. Chunk<br/><b>LangChain text splitter</b>"]:::ai
+    S7["7. Embed and store<br/><b>Chroma + scikit-learn</b>"]:::ai
+    S1 --> S2 --> S3 --> S4 --> S5 --> S6 --> S7
+  end
+  CSV --> S1
+  classDef src fill:#eee,stroke:#888,color:#222
+  classDef proc fill:#d9f2ea,stroke:#0f6e56,color:#04342c
+  classDef gov fill:#fbe9cc,stroke:#854f0b,color:#412402
+  classDef ai fill:#e4e2fb,stroke:#534ab7,color:#26215c
+  style ORCH fill:none,stroke:#666,stroke-width:2px,stroke-dasharray: 6 4

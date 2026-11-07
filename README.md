@@ -1,7 +1,7 @@
 # Migration & Governance Assistant
 
 A retrieval-augmented (RAG) assistant for **data migration and governance**. It migrates a real, open dataset
-from a legacy-style extract into a "Data Hub", reconciles the result, generates the governance documents from
+from a legacy-style extract into a "Target Platform", reconciles the result, generates the governance documents from
 the real schema and results, masks PII, indexes the documents, and then answers questions about the migration
 **only from those documents, with citations**. If the answer is not in the documents, it says so.
 
@@ -94,14 +94,14 @@ Reconciliation (policy P-05: exact row counts, money within 0.01 %, null drift a
 
 | Hub table | Rows | Status |
 |---|---|---|
-| hub_customer | 99,441 | PASS |
-| hub_order | 99,441 | PASS |
-| hub_order_item | 112,650 | PASS |
-| hub_payment | 103,886 | PASS |
-| hub_review | 99,224 | PASS |
-| hub_product | 32,951 | PASS |
-| hub_seller | 3,095 | PASS |
-| hub_geolocation | 1,000,163 | PASS |
+| tgt_customer | 99,441 | PASS |
+| tgt_order | 99,441 | PASS |
+| tgt_order_item | 112,650 | PASS |
+| tgt_payment | 103,886 | PASS |
+| tgt_review | 99,224 | PASS |
+| tgt_product | 32,951 | PASS |
+| tgt_seller | 3,095 | PASS |
+| tgt_geolocation | 1,000,163 | PASS |
 
 Data-quality findings that the reconciliation surfaced in the source data (kept, not silently fixed):
 
@@ -129,6 +129,17 @@ offline embedding fallback**, so it measures retrieval and the refusal gate, not
 | Answers containing the expected fact (top 3 passages, no reasoning) | 10 of 12 |
 
 Run `python -m eval.run_eval` with your own Gemini key to measure the full configuration.
+
+## Two kinds of questions
+
+| Type | Example | How it is answered |
+|---|---|---|
+| Migration (documents) | "What is blocking the Customer Experience cutover?" | Hybrid retrieval over the masked documents, LLM answer with [S#] citations, refusal if not found |
+| Data (records) | "Top 5 product categories by revenue" | LLM writes one SQL query, Python checks it is a single read-only SELECT, runs it, LLM words the result. SQL and rows are shown. |
+
+Data questions run on the full migrated database if the pipeline was run, else on `data/target_sample.db`
+(a real-data sample of 5,000 orders with every link intact, built by `python -m pipeline.make_sample`).
+The **How it works** tab in the app explains the purpose, both workflows, every table and column, links, and PII handling.
 
 ## Run it
 

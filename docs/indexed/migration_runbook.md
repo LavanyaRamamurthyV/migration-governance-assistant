@@ -1,6 +1,6 @@
 # Migration runbook (sample for the Olist migration demo)
 
-This runbook describes the validation checklist used for every table moved from the legacy extract to the Data Hub. It is a sample written for this demo.
+This runbook describes the validation checklist used for every table moved from the legacy extract to the Target Platform. It is a sample written for this demo.
 
 ## Migration steps
 
@@ -10,11 +10,11 @@ Receive the flat-file extract from the legacy system. Record the file name and t
 ### Step 2: Load to staging
 Load the file into the legacy staging database exactly as received, with every column as text. Do not clean anything at this stage.
 
-### Step 3: Transform and load to the hub
-Apply the rules in the source-to-target mapping: rename columns, convert types, tokenize identifiers, and mask free text. Load the result into the Data Hub tables.
+### Step 3: Transform and load to the target
+Apply the rules in the source-to-target mapping: rename columns, convert types, tokenize identifiers, and mask free text. Load the result into the Target Platform tables.
 
 ### Step 4: Reconcile
-Compare staging and hub using the P-05 checks: row counts, amount totals, null rates, and key uniqueness. Also run the referential integrity checks between hub tables.
+Compare staging and target using the P-05 checks: row counts, amount totals, null rates, and key uniqueness. Also run the referential integrity checks between target tables.
 
 ### Step 5: Log defects
 Record every failed check as a defect. Record every problem that already exists in the source as a finding with an id, a count, the impacted teams, and whether it blocks cutover.

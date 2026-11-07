@@ -1,10 +1,10 @@
 {
   "tables": [
     {
-      "table": "hub_customer",
+      "table": "tgt_customer",
       "source_file": "olist_customers_dataset.csv",
       "source_rows": 99441,
-      "hub_rows": 99441,
+      "tgt_rows": 99441,
       "row_match": true,
       "amount_checks": [],
       "null_check": {
@@ -18,23 +18,23 @@
           "customer_key"
         ],
         "source_distinct": 99441,
-        "hub_distinct": 99441,
+        "tgt_distinct": 99441,
         "unique_in_source": true,
         "preserved": true
       },
       "token_check": {
         "source_distinct_persons": 96096,
-        "hub_distinct_tokens": 96096,
+        "tgt_distinct_tokens": 96096,
         "collisions": 0,
         "passed": true
       },
       "status": "PASS"
     },
     {
-      "table": "hub_order",
+      "table": "tgt_order",
       "source_file": "olist_orders_dataset.csv",
       "source_rows": 99441,
-      "hub_rows": 99441,
+      "tgt_rows": 99441,
       "row_match": true,
       "amount_checks": [],
       "null_check": {
@@ -48,7 +48,7 @@
           "order_id"
         ],
         "source_distinct": 99441,
-        "hub_distinct": 99441,
+        "tgt_distinct": 99441,
         "unique_in_source": true,
         "preserved": true
       },
@@ -56,23 +56,23 @@
       "status": "PASS"
     },
     {
-      "table": "hub_order_item",
+      "table": "tgt_order_item",
       "source_file": "olist_order_items_dataset.csv",
       "source_rows": 112650,
-      "hub_rows": 112650,
+      "tgt_rows": 112650,
       "row_match": true,
       "amount_checks": [
         {
           "column": "price_brl",
           "source_sum": 13591643.7,
-          "hub_sum": 13591643.7,
+          "tgt_sum": 13591643.7,
           "diff_pct": 0.0,
           "passed": true
         },
         {
           "column": "freight_brl",
           "source_sum": 2251909.54,
-          "hub_sum": 2251909.54,
+          "tgt_sum": 2251909.54,
           "diff_pct": 0.0,
           "passed": true
         }
@@ -89,7 +89,7 @@
           "item_seq"
         ],
         "source_distinct": 112650,
-        "hub_distinct": 112650,
+        "tgt_distinct": 112650,
         "unique_in_source": true,
         "preserved": true
       },
@@ -97,16 +97,16 @@
       "status": "PASS"
     },
     {
-      "table": "hub_payment",
+      "table": "tgt_payment",
       "source_file": "olist_order_payments_dataset.csv",
       "source_rows": 103886,
-      "hub_rows": 103886,
+      "tgt_rows": 103886,
       "row_match": true,
       "amount_checks": [
         {
           "column": "payment_value_brl",
           "source_sum": 16008872.12,
-          "hub_sum": 16008872.12,
+          "tgt_sum": 16008872.12,
           "diff_pct": 0.0,
           "passed": true
         }
@@ -123,7 +123,7 @@
           "payment_seq"
         ],
         "source_distinct": 103886,
-        "hub_distinct": 103886,
+        "tgt_distinct": 103886,
         "unique_in_source": true,
         "preserved": true
       },
@@ -131,10 +131,10 @@
       "status": "PASS"
     },
     {
-      "table": "hub_review",
+      "table": "tgt_review",
       "source_file": "olist_order_reviews_dataset.csv",
       "source_rows": 99224,
-      "hub_rows": 99224,
+      "tgt_rows": 99224,
       "row_match": true,
       "amount_checks": [],
       "null_check": {
@@ -148,7 +148,7 @@
           "review_id"
         ],
         "source_distinct": 98410,
-        "hub_distinct": 98410,
+        "tgt_distinct": 98410,
         "unique_in_source": false,
         "preserved": true
       },
@@ -156,10 +156,10 @@
       "status": "PASS"
     },
     {
-      "table": "hub_product",
+      "table": "tgt_product",
       "source_file": "olist_products_dataset.csv",
       "source_rows": 32951,
-      "hub_rows": 32951,
+      "tgt_rows": 32951,
       "row_match": true,
       "amount_checks": [],
       "null_check": {
@@ -173,7 +173,7 @@
           "product_id"
         ],
         "source_distinct": 32951,
-        "hub_distinct": 32951,
+        "tgt_distinct": 32951,
         "unique_in_source": true,
         "preserved": true
       },
@@ -181,10 +181,10 @@
       "status": "PASS"
     },
     {
-      "table": "hub_seller",
+      "table": "tgt_seller",
       "source_file": "olist_sellers_dataset.csv",
       "source_rows": 3095,
-      "hub_rows": 3095,
+      "tgt_rows": 3095,
       "row_match": true,
       "amount_checks": [],
       "null_check": {
@@ -198,7 +198,7 @@
           "seller_id"
         ],
         "source_distinct": 3095,
-        "hub_distinct": 3095,
+        "tgt_distinct": 3095,
         "unique_in_source": true,
         "preserved": true
       },
@@ -206,10 +206,10 @@
       "status": "PASS"
     },
     {
-      "table": "hub_geolocation",
+      "table": "tgt_geolocation",
       "source_file": "olist_geolocation_dataset.csv",
       "source_rows": 1000163,
-      "hub_rows": 1000163,
+      "tgt_rows": 1000163,
       "row_match": true,
       "amount_checks": [],
       "null_check": {
@@ -225,27 +225,27 @@
   ],
   "referential": [
     {
-      "check": "hub_order_item.order_id -> hub_order",
+      "check": "tgt_order_item.order_id -> tgt_order",
       "orphans": 0
     },
     {
-      "check": "hub_payment.order_id -> hub_order",
+      "check": "tgt_payment.order_id -> tgt_order",
       "orphans": 0
     },
     {
-      "check": "hub_review.order_id -> hub_order",
+      "check": "tgt_review.order_id -> tgt_order",
       "orphans": 0
     },
     {
-      "check": "hub_order.customer_key -> hub_customer",
+      "check": "tgt_order.customer_key -> tgt_customer",
       "orphans": 0
     },
     {
-      "check": "hub_order_item.product_id -> hub_product",
+      "check": "tgt_order_item.product_id -> tgt_product",
       "orphans": 0
     },
     {
-      "check": "hub_order_item.seller_id -> hub_seller",
+      "check": "tgt_order_item.seller_id -> tgt_seller",
       "orphans": 0
     }
   ],

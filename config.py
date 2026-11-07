@@ -21,7 +21,7 @@ DOCS_INDEXED = ROOT / "docs" / "indexed"                      # masked docs that
 DOCS_UNMASKED = STORAGE / "docs_unmasked"                     # generated docs before masking
 
 LEGACY_DB = STORAGE / "legacy_staging.db"    # stand-in for the legacy (Teradata-style) side
-HUB_DB = STORAGE / "data_hub.db"             # stand-in for the Data Hub
+TARGET_DB = STORAGE / "target_platform.db"             # stand-in for the Target Platform
 CHROMA_DIR = STORAGE / "chroma"
 CHUNKS_FILE = STORAGE / "chunks.json"
 INDEX_META = STORAGE / "index_meta.json"

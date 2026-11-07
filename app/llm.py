@@ -15,7 +15,7 @@ import urllib.request
 
 PROVIDERS = ["gemini", "claude", "ollama", "extractive"]
 
-SYSTEM_PROMPT = """You are the Migration & Governance Assistant for a data migration from a legacy platform to a Data Hub.
+SYSTEM_PROMPT = """You are the Migration & Governance Assistant for a data migration from a legacy platform to a Target Platform.
 Rules:
 1. Answer ONLY from the CONTEXT passages below. Never use outside knowledge.
 2. Cite every statement with the passage tags in square brackets, for example [S1] or [S1][S3].
@@ -65,7 +65,7 @@ def _gemini_candidates(client):
     return out[:4]
 
 
-def _gemini(prompt):
+def _gemini(prompt, system=None):
     global _gemini_model
     key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
     if not key:
@@ -79,7 +79,7 @@ def _gemini(prompt):
         try:
             resp = client.models.generate_content(
                 model=model, contents=prompt,
-                config=types.GenerateContentConfig(system_instruction=SYSTEM_PROMPT, temperature=0))
+                config=types.GenerateContentConfig(system_instruction=system or SYSTEM_PROMPT, temperature=0))
             _gemini_model = model
             usage = getattr(resp, "usage_metadata", None)
             return dict(text=(resp.text or "").strip(), model=model,
@@ -92,7 +92,7 @@ def _gemini(prompt):
 
 
 # ------------------------------------------------------------------ Claude
-def _claude(prompt):
+def _claude(prompt, system=None):
     key = os.getenv("ANTHROPIC_API_KEY")
     if not key:
         raise LlmError("ANTHROPIC_API_KEY is not set.")
@@ -100,7 +100,7 @@ def _claude(prompt):
     model = os.getenv("CLAUDE_MODEL", "claude-haiku-5-5")
     try:
         resp = anthropic.Anthropic(api_key=key).messages.create(
-            model=model, max_tokens=800, system=SYSTEM_PROMPT,
+            model=model, max_tokens=800, system=system or SYSTEM_PROMPT,
             messages=[{"role": "user", "content": prompt}])
     except Exception as exc:
         raise LlmError(f"Claude call failed ({type(exc).__name__}): {exc}")
@@ -109,11 +109,11 @@ def _claude(prompt):
 
 
 # ------------------------------------------------------------------ Ollama (local)
-def _ollama(prompt):
+def _ollama(prompt, system=None):
     model = os.getenv("OLLAMA_MODEL", "llama3.2")
     host = os.getenv("OLLAMA_HOST", "http://localhost:11434")
     body = json.dumps({"model": model, "stream": False, "options": {"temperature": 0},
-                       "messages": [{"role": "system", "content": SYSTEM_PROMPT},
+                       "messages": [{"role": "system", "content": system or SYSTEM_PROMPT},
                                     {"role": "user", "content": prompt}]}).encode()
     req = urllib.request.Request(f"{host}/api/chat", data=body, headers={"Content-Type": "application/json"})
     try:
@@ -148,3 +148,11 @@ def generate(question: str, chunks, provider: str) -> dict:
     if provider == "ollama":
         return _ollama(prompt)
     raise LlmError(f"Unknown provider '{provider}'. Choose one of: {', '.join(PROVIDERS)}")
+
+
+def complete(prompt: str, provider: str, system: str) -> dict:
+    """Plain LLM call with a custom system prompt (used by the data-question engine)."""
+    fn = {"gemini": _gemini, "claude": _claude, "ollama": _ollama}.get(provider)
+    if fn is None:
+        raise LlmError("Data questions need an LLM to write the SQL. Pick gemini, claude or ollama in the sidebar.")
+    return fn(prompt, system)

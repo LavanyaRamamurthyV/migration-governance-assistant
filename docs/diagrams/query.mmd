@@ -1,0 +1,25 @@
+flowchart TD
+  Q["Ask a question<br/><b>Streamlit</b>"]:::ui
+  subgraph LG["Orchestrator: LangGraph (app/graph.py)"]
+    direction TB
+    RET["1. Retrieve<br/><b>Chroma + scikit-learn</b> hybrid"]:::ai
+    REL{"2. Relevance check<br/><b>LangGraph + NumPy</b>"}:::gov
+    GEN["3. Generate<br/><b>Gemini / Claude / Ollama</b>"]:::ai
+    VER["4. Verify citation<br/><b>Python</b>"]:::gov
+    REF["Refuse: Not found in documents"]:::gov
+    RET --> REL
+    REL -- yes --> GEN --> VER
+    REL -- no --> REF
+    VER -- no valid citation --> REF
+  end
+  ANS["5. Show answer and sources<br/><b>Streamlit</b>"]:::ui
+  LOG["6. Log<br/><b>JSON file + pandas</b>"]:::mon
+  Q --> RET
+  VER -- ok --> ANS
+  REF --> ANS
+  ANS --> LOG
+  classDef ui fill:#eee,stroke:#888,color:#222
+  classDef ai fill:#e4e2fb,stroke:#534ab7,color:#26215c
+  classDef gov fill:#fbe9cc,stroke:#854f0b,color:#412402
+  classDef mon fill:#d9f2ea,stroke:#0f6e56,color:#04342c
+  style LG fill:none,stroke:#666,stroke-width:2px,stroke-dasharray: 6 4

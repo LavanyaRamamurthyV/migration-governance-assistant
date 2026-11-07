@@ -8,7 +8,7 @@ This is a SAMPLE policy written for this demo. It is not any real institution's 
 Data is classified as Public, Internal, Confidential or Restricted. Personal data is Restricted. In this migration, customer_unique_id and free-text review comments are Restricted. Zip code prefixes are quasi-identifiers and are Confidential. Everything else is Internal.
 
 ### P-02 PII handling
-Personal data must be tokenized or masked before it reaches the Data Hub and before any document is indexed for AI use. Direct identifiers are tokenized (customer_unique_id becomes customer_person_token). Free text is scanned for emails, phone numbers, national ids and long identifiers, and matches are masked. Quasi-identifiers are kept only at prefix level. Masking is pattern based and not exhaustive, so a human spot check is required each release.
+Personal data must be tokenized or masked before it reaches the Target Platform and before any document is indexed for AI use. Direct identifiers are tokenized (customer_unique_id becomes customer_person_token). Free text is scanned for emails, phone numbers, national ids and long identifiers, and matches are masked. Quasi-identifiers are kept only at prefix level. Masking is pattern based and not exhaustive, so a human spot check is required each release.
 
 ### P-03 Retention
 Transaction data (orders, order items, payments) is kept for 7 years. Customer and marketing data is kept for 3 years. Review text is kept for 2 years. Legacy staging copies are deleted 30 days after cutover.
