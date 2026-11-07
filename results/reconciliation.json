@@ -1,0 +1,330 @@
+{
+  "tables": [
+    {
+      "table": "hub_customer",
+      "source_file": "olist_customers_dataset.csv",
+      "source_rows": 99441,
+      "hub_rows": 99441,
+      "row_match": true,
+      "amount_checks": [],
+      "null_check": {
+        "max_drift_pp": 0.0,
+        "worst_column": "customer_key",
+        "passed": true,
+        "columns_checked": 5
+      },
+      "key_check": {
+        "key": [
+          "customer_key"
+        ],
+        "source_distinct": 99441,
+        "hub_distinct": 99441,
+        "unique_in_source": true,
+        "preserved": true
+      },
+      "token_check": {
+        "source_distinct_persons": 96096,
+        "hub_distinct_tokens": 96096,
+        "collisions": 0,
+        "passed": true
+      },
+      "status": "PASS"
+    },
+    {
+      "table": "hub_order",
+      "source_file": "olist_orders_dataset.csv",
+      "source_rows": 99441,
+      "hub_rows": 99441,
+      "row_match": true,
+      "amount_checks": [],
+      "null_check": {
+        "max_drift_pp": 0.0,
+        "worst_column": "order_id",
+        "passed": true,
+        "columns_checked": 8
+      },
+      "key_check": {
+        "key": [
+          "order_id"
+        ],
+        "source_distinct": 99441,
+        "hub_distinct": 99441,
+        "unique_in_source": true,
+        "preserved": true
+      },
+      "token_check": null,
+      "status": "PASS"
+    },
+    {
+      "table": "hub_order_item",
+      "source_file": "olist_order_items_dataset.csv",
+      "source_rows": 112650,
+      "hub_rows": 112650,
+      "row_match": true,
+      "amount_checks": [
+        {
+          "column": "price_brl",
+          "source_sum": 13591643.7,
+          "hub_sum": 13591643.7,
+          "diff_pct": 0.0,
+          "passed": true
+        },
+        {
+          "column": "freight_brl",
+          "source_sum": 2251909.54,
+          "hub_sum": 2251909.54,
+          "diff_pct": 0.0,
+          "passed": true
+        }
+      ],
+      "null_check": {
+        "max_drift_pp": 0.0,
+        "worst_column": "order_id",
+        "passed": true,
+        "columns_checked": 7
+      },
+      "key_check": {
+        "key": [
+          "order_id",
+          "item_seq"
+        ],
+        "source_distinct": 112650,
+        "hub_distinct": 112650,
+        "unique_in_source": true,
+        "preserved": true
+      },
+      "token_check": null,
+      "status": "PASS"
+    },
+    {
+      "table": "hub_payment",
+      "source_file": "olist_order_payments_dataset.csv",
+      "source_rows": 103886,
+      "hub_rows": 103886,
+      "row_match": true,
+      "amount_checks": [
+        {
+          "column": "payment_value_brl",
+          "source_sum": 16008872.12,
+          "hub_sum": 16008872.12,
+          "diff_pct": 0.0,
+          "passed": true
+        }
+      ],
+      "null_check": {
+        "max_drift_pp": 0.0,
+        "worst_column": "order_id",
+        "passed": true,
+        "columns_checked": 5
+      },
+      "key_check": {
+        "key": [
+          "order_id",
+          "payment_seq"
+        ],
+        "source_distinct": 103886,
+        "hub_distinct": 103886,
+        "unique_in_source": true,
+        "preserved": true
+      },
+      "token_check": null,
+      "status": "PASS"
+    },
+    {
+      "table": "hub_review",
+      "source_file": "olist_order_reviews_dataset.csv",
+      "source_rows": 99224,
+      "hub_rows": 99224,
+      "row_match": true,
+      "amount_checks": [],
+      "null_check": {
+        "max_drift_pp": 0.0,
+        "worst_column": "review_id",
+        "passed": true,
+        "columns_checked": 7
+      },
+      "key_check": {
+        "key": [
+          "review_id"
+        ],
+        "source_distinct": 98410,
+        "hub_distinct": 98410,
+        "unique_in_source": false,
+        "preserved": true
+      },
+      "token_check": null,
+      "status": "PASS"
+    },
+    {
+      "table": "hub_product",
+      "source_file": "olist_products_dataset.csv",
+      "source_rows": 32951,
+      "hub_rows": 32951,
+      "row_match": true,
+      "amount_checks": [],
+      "null_check": {
+        "max_drift_pp": 0.0,
+        "worst_column": "product_id",
+        "passed": true,
+        "columns_checked": 9
+      },
+      "key_check": {
+        "key": [
+          "product_id"
+        ],
+        "source_distinct": 32951,
+        "hub_distinct": 32951,
+        "unique_in_source": true,
+        "preserved": true
+      },
+      "token_check": null,
+      "status": "PASS"
+    },
+    {
+      "table": "hub_seller",
+      "source_file": "olist_sellers_dataset.csv",
+      "source_rows": 3095,
+      "hub_rows": 3095,
+      "row_match": true,
+      "amount_checks": [],
+      "null_check": {
+        "max_drift_pp": 0.0,
+        "worst_column": "seller_id",
+        "passed": true,
+        "columns_checked": 4
+      },
+      "key_check": {
+        "key": [
+          "seller_id"
+        ],
+        "source_distinct": 3095,
+        "hub_distinct": 3095,
+        "unique_in_source": true,
+        "preserved": true
+      },
+      "token_check": null,
+      "status": "PASS"
+    },
+    {
+      "table": "hub_geolocation",
+      "source_file": "olist_geolocation_dataset.csv",
+      "source_rows": 1000163,
+      "hub_rows": 1000163,
+      "row_match": true,
+      "amount_checks": [],
+      "null_check": {
+        "max_drift_pp": 0.0,
+        "worst_column": "geo_zip_prefix",
+        "passed": true,
+        "columns_checked": 5
+      },
+      "key_check": null,
+      "token_check": null,
+      "status": "PASS"
+    }
+  ],
+  "referential": [
+    {
+      "check": "hub_order_item.order_id -> hub_order",
+      "orphans": 0
+    },
+    {
+      "check": "hub_payment.order_id -> hub_order",
+      "orphans": 0
+    },
+    {
+      "check": "hub_review.order_id -> hub_order",
+      "orphans": 0
+    },
+    {
+      "check": "hub_order.customer_key -> hub_customer",
+      "orphans": 0
+    },
+    {
+      "check": "hub_order_item.product_id -> hub_product",
+      "orphans": 0
+    },
+    {
+      "check": "hub_order_item.seller_id -> hub_seller",
+      "orphans": 0
+    }
+  ],
+  "findings": [
+    {
+      "id": "F-01",
+      "title": "Duplicate review_id values in the source (excess rows)",
+      "count": 814,
+      "teams": [
+        "Customer Experience"
+      ],
+      "blocking": true,
+      "recommendation": "Agree a de-duplication rule with the data owner. Rows were kept so that counts reconcile.",
+      "status": "Open"
+    },
+    {
+      "id": "F-02",
+      "title": "Delivered orders with no delivered timestamp",
+      "count": 8,
+      "teams": [
+        "Logistics",
+        "Finance"
+      ],
+      "blocking": true,
+      "recommendation": "Confirm with Order Management whether the status or the timestamp is wrong before cutover.",
+      "status": "Open"
+    },
+    {
+      "id": "F-03",
+      "title": "Orders with no order items",
+      "count": 775,
+      "teams": [
+        "Finance",
+        "Logistics"
+      ],
+      "blocking": false,
+      "recommendation": "Mostly cancelled or unavailable orders. Exclude them from revenue feeds explicitly.",
+      "status": "Open"
+    },
+    {
+      "id": "F-04",
+      "title": "Orders with no payment record",
+      "count": 1,
+      "teams": [
+        "Finance"
+      ],
+      "blocking": false,
+      "recommendation": "Confirm these orders are expected to have no payment.",
+      "status": "Open"
+    },
+    {
+      "id": "F-05",
+      "title": "Products with no category name",
+      "count": 610,
+      "teams": [
+        "Marketing",
+        "Seller Ops"
+      ],
+      "blocking": false,
+      "recommendation": "Ask the catalog owner for a default category or a backfill.",
+      "status": "Open"
+    },
+    {
+      "id": "F-06",
+      "title": "Products whose category has no English translation",
+      "count": 13,
+      "teams": [
+        "Marketing"
+      ],
+      "blocking": false,
+      "recommendation": "Add the missing rows to the translation lookup.",
+      "status": "Open"
+    }
+  ],
+  "tables_passed": 8,
+  "tables_total": 8,
+  "thresholds": {
+    "row_count": "exact match",
+    "amount_pct": 0.01,
+    "null_rate_pp": 0.5
+  }
+}
